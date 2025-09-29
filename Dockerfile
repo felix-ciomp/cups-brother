@@ -13,6 +13,7 @@ LABEL org.opencontainers.image.author="Anuj Datar <anuj.datar@gmail.com>"
 LABEL org.opencontainers.image.url="https://github.com/anujdatar/cups-docker/blob/main/README.md"
 LABEL org.opencontainers.image.licenses=MIT
 
+COPY linux-brprinter-installer-2.2.4-1 /root/linux-brprinter-installer-2.2.4-1
 
 # Install dependencies
 RUN apt-get update -qq  && apt-get upgrade -qqy \
@@ -35,6 +36,10 @@ RUN apt-get update -qq  && apt-get upgrade -qqy \
 
 EXPOSE 631
 EXPOSE 5353/udp
+
+# install brother printer driver
+RUN printf 'y\ny\ny\ny\nn\nn\nn\n' | bash /root/linux-brprinter-installer-2.2.4-1 DCP-T300
+
 
 # Baked-in config file changes
 RUN sed -i 's/Listen localhost:631/Listen 0.0.0.0:631/' /etc/cups/cupsd.conf && \

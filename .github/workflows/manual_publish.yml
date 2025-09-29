@@ -1,4 +1,4 @@
-name: Publish CUPS Docker Image to Docker Hub
+name: Manual Publish CUPS Docker Image to GHCR
 
 # Controls when the action will be run
 on: workflow_dispatch

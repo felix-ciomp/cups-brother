@@ -37,7 +37,7 @@ RUN apt-get update -qq  && apt-get upgrade -qqy \
 EXPOSE 631
 EXPOSE 5353/udp
 
-# install brother printer driver
+# install brother printer driver, sample printer DCP-T300
 RUN printf 'y\ny\ny\ny\nn\nn\nn\n' | bash /root/linux-brprinter-installer-2.2.4-1 DCP-T300
 
 

@@ -20,6 +20,6 @@ jobs:
     - name: Docker Image Artifact Upload
       uses: ishworkh/docker-image-artifact-upload@v2.1.0
       with:
-        image: "cups-brother:latest"
+        image: "cups-brother"
         retention_days: 1
             

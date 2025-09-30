@@ -18,5 +18,9 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag cups-brother:250930   
       
-      - name: Save the Docker image
-        run: docker save -o cups-brother.tar cups-brother:250930
+      - name: Docker Image Artifact Upload
+        uses: ishworkh/docker-image-artifact-upload@v2.1.0
+        with:
+          image: cups-brother:250930 
+
+          

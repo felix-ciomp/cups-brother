@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Build Docker Image and Upload the Image to Artifact
 
 on:
   push:
@@ -15,4 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag cups-brother:latest        
+      run: docker build . --file Dockerfile --tag cups-brother:latest    
+    
+    - name: Upload image
+    - uses: ishworkh/container-image-artifact-upload@v2.0.0
+      with:
+        image: "cups-brother:latest"

@@ -16,4 +16,8 @@ if [ ! -f /etc/cups/cupsd.conf ]; then
     cp -rpn /etc/cups-bak/* /etc/cups/
 fi
 
+if [ $CUPSBRPRINTER !="" ]; then
+    printf 'y\ny\ny\ny\nn\nn\nn\n' | bash /root/linux-brprinter-installer-2.2.4-1 $CUPSBRPRINTER
+fi
+
 exec /usr/sbin/cupsd -f

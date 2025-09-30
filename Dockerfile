@@ -1,16 +1,16 @@
 FROM debian:stable-slim
 
 # ENV variables
-ENV DEBIAN_FRONTEND noninteractive
-ENV TZ "America/New_York"
-ENV CUPSADMIN admin
-ENV CUPSPASSWORD password
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ="Asia/ShangHai"
+ENV CUPSADMIN=admin
+ENV CUPSPASSWORD=password
 
 
-LABEL org.opencontainers.image.source="https://github.com/anujdatar/cups-docker"
-LABEL org.opencontainers.image.description="CUPS Printer Server"
-LABEL org.opencontainers.image.author="Anuj Datar <anuj.datar@gmail.com>"
-LABEL org.opencontainers.image.url="https://github.com/anujdatar/cups-docker/blob/main/README.md"
+LABEL org.opencontainers.image.source="https://github.com/felix-ciomp/cups-brother/"
+LABEL org.opencontainers.image.description="CUPS Printer Server with Brother Linux driver"
+LABEL org.opencontainers.image.author="Felix <felixw@163.com>"
+LABEL org.opencontainers.image.url="https://github.com/felix-ciomp/cups-brother/blob/main/README.md"
 LABEL org.opencontainers.image.licenses=MIT
 
 COPY linux-brprinter-installer-2.2.4-1 /root/linux-brprinter-installer-2.2.4-1

@@ -5,7 +5,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ="Asia/ShangHai"
 ENV CUPSADMIN=admin
 ENV CUPSPASSWORD=password
-
+# default brother printer
+ENV CUPSBRPRINTER=DCP-T300
 
 LABEL org.opencontainers.image.source="https://github.com/felix-ciomp/cups-brother/"
 LABEL org.opencontainers.image.description="CUPS Printer Server with Brother Linux driver"
@@ -13,6 +14,7 @@ LABEL org.opencontainers.image.author="Felix <felixw@163.com>"
 LABEL org.opencontainers.image.url="https://github.com/felix-ciomp/cups-brother/blob/main/README.md"
 LABEL org.opencontainers.image.licenses=MIT
 
+# copy linux driver installer
 COPY linux-brprinter-installer-2.2.4-1 /root/linux-brprinter-installer-2.2.4-1
 
 # Install dependencies
@@ -36,10 +38,6 @@ RUN apt-get update -qq  && apt-get upgrade -qqy \
 
 EXPOSE 631
 EXPOSE 5353/udp
-
-# install brother printer driver, sample printer DCP-T300
-RUN printf 'y\ny\ny\ny\nn\nn\nn\n' | bash /root/linux-brprinter-installer-2.2.4-1 DCP-T300
-
 
 # Baked-in config file changes
 RUN sed -i 's/Listen localhost:631/Listen 0.0.0.0:631/' /etc/cups/cupsd.conf && \

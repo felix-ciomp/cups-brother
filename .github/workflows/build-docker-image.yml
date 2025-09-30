@@ -15,11 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag cups-brother:$(date +%s)
-
-    - name: Docker Image Artifact Upload
-      uses: ishworkh/docker-image-artifact-upload@v2.1.0
-      with:
-        image: "cups-brother"
-        retention_days: 1
-            
+      run: docker build . --file Dockerfile --tag cups-brother:latest        

@@ -17,10 +17,8 @@ jobs:
       
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag cups-brother
+
         
-      - name: Docker Image Artifact Upload
-        uses: ishworkh/docker-image-artifact-upload@v2.1.0
-        with:
-          image: cups-brother
+        
 
           
